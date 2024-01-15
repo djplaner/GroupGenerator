@@ -7,47 +7,54 @@
         <link rel="stylesheet" href="index.css">
         <script src="./index.js"></script>
         <script src="./toasted.js"></script>
-        <title>Gerador de Grupos Aleatório</title>
-        <link rel="icon" type="imagem/png" href="./assests/user-friends-solid.png"/>
+        <title>Random Group Generator</title>
+        <link rel="icon" type="image/png" href="./assests/user-friends-solid.png"/>
     </head>
     <body>
-        <header class="column">
+        <header>
             <div id='header1'>
                 <img src="./assests/user-friends-solid.png" class="i">
                 <img src="./assests/user-plus-solid.png" class="i">
             </div>
             <div id='header2'>
-                <h1 class="word">Gerador de Grupos Aleatório</h1>
+                <h1 class="word">Random Group Generator</h1>
             </div>
         </header>
         <section id="container" class="row">
             <div class="column">
+                    <h3>Names</h3>
                 <div id='key-0' class="row containerInput">
-                    <input type="text" placeholder="Nome" onkeypress="this.style.borderColor = '#a5a5a5'" class="members word">
+                    <!-- <input type="text" placeholder="Nome" onkeypress="this.style.borderColor = '#a5a5a5'" class="members word"> -->
+                    <textarea onchange="updateCurrentAllocation()" rows="15" cols="40" id="members" placeholder="(Paste/enter a list of names, one to a line)"></textarea>
                 </div>
-                <div class="newMemberContainer row" onclick="addName()" onsubmit="addName()">
+<!--                <div class="newMemberContainer row" onclick="addName()" onsubmit="addName()">
                     <p class="word">Adicionar Nome</p>
                     <img src="./assests/plus-solid.png" class="plus icon">
-                </div>
+                </div> -->
             </div>
             <div class="column" id="qtd-container">
-                <p class="word">N° de pessoas por grupo:</p>
+                <h3># of people per group</h3>
                 <div id="btnQtd" class="row">
                     <button onclick="changeNumberMember(-1)"><div class="subtract"></div></button>
                     <input id='Number' type="text" value="2" class="word">
                     <button onclick="changeNumberMember(1)"><img src="./assests/plus-solid.png" class="plus icon"></button>
                 </div>
+                <div class="currentAllocation">
+                    <h3>Current Allocation</h3>
+                <p># of groups: <span id="possible_num_groups">0</span></p>
+                <p># of people left over: <span id="left_over">0</span></p>
+                </div>
             </div>
         </section>
         <div id="btnContainer" class="row">
             <button onclick="generateGroup()" class="row word btnModel">
-                Gerar Grupos
+                Generate Groups
                 <img src="./assests/random-solid.svg" class="icon">
             </button>
             <br>
             <button type="button" onclick="window.location.reload()" class="row word btnModel" name="button">
                 <img src="./assests/arrow-left-solid.svg" class="icon">
-                Voltar
+                Return
             </button>
         </div>
         <div id='groupContainer'></div>

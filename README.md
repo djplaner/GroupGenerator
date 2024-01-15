@@ -1,12 +1,32 @@
-# GroupGenerator
+# Random Group Generator
 
-### Link
-*https://togarci.github.io/GroupGenerator/*
+This is an update of [GroupGenerator](https://github.com/togarci/GroupGenerator) - thank you [togarci](https://github.com/togarci) - a simple HTML/Javascript page that enables you to 
+
+1. Provide a list of names.
+2. Choose the number of groups to create.
+3. Randomly allocate names to groups.
+
+Changes to the original include:
+
+- Speeding up the addition/removal of names.
+
+    Use a textarea to allow copy and pasting of and subsequent quick editing of names. One name per line.
+
+- Showing the _current allocation_.
+
+    As you add names or change the number of groups automatically display the new number of groups and number of people left over (e.g. if there are 5 names and group size is 2, there will be 2 groups of 2 with 1 person "left over").
+
+- Some minor layout/HTML/CSS changes.
+
+    Some required for new elements, a bug or two, and some cosmetic.
+
+- Translated original Spanish text to English.
+
+- Updated the animated GIF screenshots below.
+
 
 ## About
 
 This web page was created thought to help students to generate Random groups between friends. But it can be used for anyone that wanna to generate random groups. To that it is very simple, you just input the members and choose number of the people by group and then the system do the rest.
 
-![Demonstracao1](/assests/GroupGenerator1.gif)
-
-![Demonstracao](/assests/GroupGenerator.gif)
+![](assests/GroupGenerator.gif)
