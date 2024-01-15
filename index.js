@@ -2,13 +2,13 @@ function addName() {
     let index = document.querySelectorAll('.containerInput').length
     const inputModel = `<div id='key-${index}' class="row containerInput">
                             <input type="text" placeholder="Nome" onkeypress="this.style.borderColor = '#a5a5a5'" class="members word">
-                            <img src="./assests/times-solid.png" onclick="removeInput(${index})" class="remove">
+                            <img src="./assets/times-solid.png" onclick="removeInput(${index})" class="remove">
                         </div>`;
     const input = document.querySelectorAll('.containerInput');
     input[input.length - 1].insertAdjacentHTML("afterend", inputModel);
 
     if(input[0].children.length == 1) {
-        input[0].insertAdjacentHTML('beforeend', `<img src="./assests/times-solid.png" onclick="removeInput(0)" class="remove">`)
+        input[0].insertAdjacentHTML('beforeend', `<img src="./assets/times-solid.png" onclick="removeInput(0)" class="remove">`)
     }
 }
 
