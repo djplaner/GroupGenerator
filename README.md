@@ -6,7 +6,9 @@ This is an update of [GroupGenerator](https://github.com/togarci/GroupGenerator)
 2. Choose the number of groups to create.
 3. Randomly allocate names to groups.
 
-Changes to the original include:
+[Use it here](https://djplaner.github.io/GroupGenerator/) or see an [animated screenshot below](#about).
+
+## Changes to the original
 
 - Speeding up the addition/removal of names.
 
@@ -23,7 +25,6 @@ Changes to the original include:
 - Translated original Spanish text to English.
 
 - Updated the animated GIF screenshots below.
-
 
 ## About
 
