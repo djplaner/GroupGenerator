@@ -14,6 +14,10 @@ This is an update of [GroupGenerator](https://github.com/togarci/GroupGenerator)
 
     Use a textarea to allow copy and pasting of and subsequent quick editing of names. One name per line.
 
+- Add the ability save and load one group allocation.
+
+    A group allocation is saved to the current browser on the current computer. Enabling you to save the current allocation, navigate away from the generator, return to it later, and reload the saved allocation.
+
 - Showing the _current allocation_.
 
     As you add names or change the number of groups automatically display the new number of groups and number of people left over (e.g. if there are 5 names and group size is 2, there will be 2 groups of 2 with 1 person "left over").
@@ -34,6 +38,7 @@ This web page was created thought to help students to generate Random groups bet
 
 ## To do
 
+- [x] Add the ability to save group allocations to allow for later retrieval - use local storage
 - [ ] Make the application more responsive.
 
     Primarily to allow effective use in a classroom on a data projector.

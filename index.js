@@ -151,13 +151,107 @@ function generateGroup() {
                 }
             }
         }
-        outContainerAnimation();
-        setTimeout(() => {
-            innerDivGroupsOnHTML(Groups);
-            document.querySelector('#btnContainer').style.justifyContent = 'space-around';
-            document.querySelector('.btnModel:last-child').style.display = 'flex';
-        }, 700);
+
+        displayGroups(Groups)
     } else {
         setToasted(false, 'All fields must be prefilled');
     }
+}
+
+/**
+ * displayGroups(Groups)
+ * - given an array of arrays of names update the page to display the allocation
+ */
+function displayGroups(Groups) {
+    outContainerAnimation();
+    setTimeout(() => {
+        innerDivGroupsOnHTML(Groups);
+        document.querySelector('#btnContainer').style.justifyContent = 'space-around';
+        document.querySelector('.btnModel:last-child').style.display = 'flex';
+    }, 700);
+    // display the save allocation and hide the load allocation button
+    document.querySelector('#saveAllocation').style.display = 'block';
+    document.querySelector('#loadAllocation').style.display = 'none';
+}
+
+/** 
+ * saveAllocation()
+ * - only able to be called when groups have been generated
+ * - indicated by the presence of at least one div.modelGroupsCard
+ * - extract a group allocation structure from those cards
+ * - save it as a JSON strong to local storage as dj-group-generator
+ */
+
+function saveAllocation() {
+    // check if there are any groups to save
+    let groups = document.querySelectorAll('.modelGroupsCard');
+    if (groups.length == 0) {
+        setToasted(false, 'No groups to save');
+        return;
+    }
+
+    let allocation = getCurrentAllocation(groups);
+    let number = document.querySelector('#Number').value;
+
+    // convert to JSON and save to local storage
+    let allocationJSON = JSON.stringify(allocation);
+    localStorage.setItem('dj-group-generator', allocationJSON);
+    localStorage.setItem('dj-group-generator-number', number);
+    console.log(`Saved allocation: ${allocationJSON}`);
+    setToasted(true, 'Saved current group allocation');
+}
+
+/**
+ * getCurrentAllocation(groups)
+ * - given a collection of div.modelGroupsCard elements containing names separate by <br> tags
+ * - create an array of arrays 
+ * - each array is a group in turn containing an array of names
+ * - return the array of arrays
+ */
+
+function getCurrentAllocation(groups) {
+    let allocation = [];
+    groups.forEach(group => {
+        let names = group.innerHTML.split('<br>');
+        names = names.filter(name => name.trim() != '');
+        // remove <p> and </p> tags from names
+        names = names.map(name => name.replace('<p>', '').replace('</p>', ''));
+        allocation.push(names);
+    });
+    return allocation;
+}
+
+/**
+ * checkSavedAllocation()
+ * - check if there's a saved allocation in local storage
+ * - if there isn't set the button#loadAllocation to hidden 
+ */
+
+function checkSavedAllocation() {
+    let allocation = localStorage.getItem('dj-group-generator');
+    if (allocation == null) {
+        document.querySelector('#loadAllocation').style.display = "none"; 
+    }
+}
+
+/**
+ * loadAllocation()
+ * - load the saved allocation from local storage
+ * - convert it from JSON to an array of arrays
+ * - display the allocation
+ */
+
+function loadAllocation() {
+    let allocation = localStorage.getItem('dj-group-generator');
+    allocation = JSON.parse(allocation);
+    let number = localStorage.getItem('dj-group-generator-number');
+    document.querySelector('#Number').value = number;
+    // clear out the content of #members and replace with the names from the allocation
+    document.querySelector('#members').value = '';
+    allocation.forEach(group => {
+        group.forEach(name => {
+            document.querySelector('#members').value += `${name}\n`;
+        });
+    });
+    displayGroups(allocation);
 }

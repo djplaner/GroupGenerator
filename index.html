@@ -10,7 +10,7 @@
         <title>Random Group Generator</title>
         <link rel="icon" type="image/png" href="./assets/user-friends-solid.png"/>
     </head>
-    <body>
+    <body onload="checkSavedAllocation()">
         <header>
             <div id='header1'>
                 <img src="./assets/user-friends-solid.png" class="i">
@@ -51,7 +51,16 @@
                 Generate Groups
                 <img src="./assets/random-solid.svg" class="icon">
             </button>
+            <br />
+            <button id="loadAllocation" onclick="loadAllocation()" class="row word btnModel">
+                Load Allocation
+                <img src="./assets/arrow-down-solid.svg" class="icon">
+            </button>
             <br>
+            <button id="saveAllocation" onclick="saveAllocation()" class="row word btnModel" style="display:none">
+                Save Allocation
+                <img src="./assets/arrow-up-solid.svg" class="icon">
+            </button>
             <button type="button" onclick="window.location.reload()" class="row word btnModel" name="button">
                 <img src="./assets/arrow-left-solid.svg" class="icon">
                 Return
