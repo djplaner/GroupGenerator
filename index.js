@@ -63,10 +63,10 @@ function innerDivGroupsOnHTML(groups) {
 
         groups[group].forEach(member => {
             //groupCard[group].insertAdjacentHTML('beforeend', `<p>${member}</p`);
-            names += `${member}<br />`
+            names += `${member} `
         });
         // remove the last <br />
-        names = names.substring(0, names.length - 6);
+        //names = names.substring(0, names.length - 6);
         names += "</p>"
         groupCard[group].insertAdjacentHTML('beforeend', names );
     }
